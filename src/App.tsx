@@ -36,7 +36,7 @@ const apps: AppTile[] = [
   {
     name: 'Sales Performance',
     description: 'Quota attainment dashboard. Track YTD performance by AE and market.',
-    url: 'https://quota-dashboard--sam1560.replit.app',
+    url: 'https://localvr-pipeline.vercel.app/',
     icon: TrendingUp,
     color: 'bg-emerald-500',
   },
