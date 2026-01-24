@@ -5,7 +5,10 @@ import {
   Gift,
   Trophy,
   ExternalLink,
-  MapPin
+  MapPin,
+  Phone,
+  LineChart,
+  Search
 } from 'lucide-react'
 
 interface AppTile {
@@ -51,6 +54,27 @@ const apps: AppTile[] = [
     url: 'https://localvr-gift-idea-app.replit.app',
     icon: Gift,
     color: 'bg-violet-500',
+  },
+  {
+    name: 'Occupancy Scraper',
+    description: 'Scrape Airbnb/VRBO listing occupancy data and match with Salesforce leads.',
+    url: 'https://localvr-occupancy-scraper-production.up.railway.app',
+    icon: Search,
+    color: 'bg-cyan-500',
+  },
+  {
+    name: 'Phone Health',
+    description: 'Monitor sales phone numbers for spam flags. Alerts AEs via Slack when flagged.',
+    url: 'https://vivacious-cooperation-production.up.railway.app',
+    icon: Phone,
+    color: 'bg-orange-500',
+  },
+  {
+    name: 'Sales Forecast',
+    description: 'Pipeline forecasting model. Predict revenue based on current pipeline stages.',
+    url: 'https://localvr-pipeline.vercel.app',
+    icon: LineChart,
+    color: 'bg-indigo-500',
   },
 ]
 
