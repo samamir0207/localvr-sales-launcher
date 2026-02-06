@@ -6,7 +6,6 @@ import {
   Trophy,
   ExternalLink,
   Phone,
-  LineChart,
   Search
 } from 'lucide-react'
 
@@ -22,7 +21,7 @@ const apps: AppTile[] = [
   {
     name: 'Luxe Attack',
     description: 'Dossier-based CRM for luxury property acquisition. Research, grade, and prioritize leads.',
-    url: 'https://luxe-attack-app.replit.app',
+    url: 'https://luxe-attack-app-production.up.railway.app/',
     icon: Target,
     color: 'bg-rose-500',
   },
@@ -67,13 +66,6 @@ const apps: AppTile[] = [
     url: 'https://vivacious-cooperation-production.up.railway.app',
     icon: Phone,
     color: 'bg-orange-500',
-  },
-  {
-    name: 'Sales Forecast',
-    description: 'Pipeline forecasting model. Predict revenue based on current pipeline stages.',
-    url: 'https://localvr-pipeline.vercel.app',
-    icon: LineChart,
-    color: 'bg-indigo-500',
   },
 ]
 
