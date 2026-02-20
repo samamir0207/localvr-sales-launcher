@@ -28,7 +28,7 @@ const apps: AppTile[] = [
   {
     name: 'Local Rank',
     description: 'Track property ranking positions and visibility across booking platforms.',
-    url: 'https://ranking.golocalvr.com',
+    url: 'https://localvr-sales-apps.up.railway.app/',
     icon: Trophy,
     color: 'bg-amber-500',
   },
