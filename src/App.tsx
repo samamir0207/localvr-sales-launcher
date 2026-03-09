@@ -2,7 +2,7 @@ import {
   Target,
   TrendingUp,
   Map,
-  Gift,
+  Magnet,
   Trophy,
   ExternalLink,
   Phone,
@@ -85,10 +85,10 @@ const categories: Category[] = [
         icon: Bot,
       },
       {
-        name: 'Gift Ideas',
-        description: 'Generate personalized gift recommendations for homeowners and partners.',
-        url: 'https://localvr-gift-idea-app.replit.app',
-        icon: Gift,
+        name: 'Lead Gen',
+        description: 'Automated lead generation and outreach pipeline for new property owners.',
+        url: 'https://localvr-lead-gen-production.up.railway.app/',
+        icon: Magnet,
       },
       {
         name: 'Phone Health',
