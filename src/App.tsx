@@ -108,7 +108,7 @@ function AppCard({ app }: { app: AppTile }) {
       href={app.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block bg-white rounded-md border border-border p-5 hover:shadow-lg hover:border-primary transition-all duration-200"
+      className="group block bg-white rounded-md border border-border p-5 min-h-[176px] hover:shadow-lg hover:border-primary transition-all duration-200"
     >
       <div className="flex items-start justify-between mb-3">
         <div className="w-12 h-12 rounded-lg bg-[#FAF3EC] flex items-center justify-center">
