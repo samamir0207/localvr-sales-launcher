@@ -9,6 +9,13 @@ import {
   Search,
   Bot,
   DollarSign,
+  LayoutDashboard,
+  ListChecks,
+  Database,
+  CalendarCheck,
+  Router,
+  ChartLine,
+  Chrome,
 } from 'lucide-react'
 
 interface AppTile {
@@ -16,6 +23,7 @@ interface AppTile {
   description: string
   url: string
   icon: React.ElementType
+  comingSoon?: boolean
 }
 
 interface Category {
@@ -39,6 +47,52 @@ const categories: Category[] = [
         url: 'https://localvr-occupancy-scraper-production.up.railway.app',
         icon: Search,
       },
+      {
+        name: 'Lead Gen',
+        description: 'Automated lead generation and outreach pipeline for new property owners.',
+        url: 'https://localvr-lead-gen-production.up.railway.app/',
+        icon: Magnet,
+      },
+    ],
+  },
+  {
+    label: 'CRM & WORKFLOW',
+    apps: [
+      {
+        name: 'Sales Home',
+        description: 'Rep daily cockpit. Ranked task list, AI morning briefing, and active deal management.',
+        url: '#',
+        icon: LayoutDashboard,
+        comingSoon: true,
+      },
+      {
+        name: 'Cadence Engine',
+        description: '10-queue AI-ranked outreach system. Automates call and email cadences by prospect stage.',
+        url: '#',
+        icon: ListChecks,
+        comingSoon: true,
+      },
+      {
+        name: 'Prospect DB',
+        description: 'Unified prospect record replacing Salesforce. Single record from first contact to signed.',
+        url: '#',
+        icon: Database,
+        comingSoon: true,
+      },
+      {
+        name: 'Meetings',
+        description: 'SDR-to-AE handoff module. AI-generated handoff briefs, meeting scoring, and outcome tracking.',
+        url: '#',
+        icon: CalendarCheck,
+        comingSoon: true,
+      },
+      {
+        name: 'Inbound Router',
+        description: 'Routes inbound web leads to SDRs by market. Claude classification, Slack alerts, response-time tracking.',
+        url: '#',
+        icon: Router,
+        comingSoon: true,
+      },
     ],
   },
   {
@@ -55,6 +109,13 @@ const categories: Category[] = [
         description: 'Interactive map of all managed properties with revenue and occupancy metrics.',
         url: 'https://lvrpropertymap.replit.app',
         icon: Map,
+      },
+      {
+        name: 'Projections App',
+        description: 'Generate revenue projections for prospect properties using market comps and seasonal data.',
+        url: '#',
+        icon: ChartLine,
+        comingSoon: true,
       },
     ],
   },
@@ -85,16 +146,17 @@ const categories: Category[] = [
         icon: Bot,
       },
       {
-        name: 'Lead Gen',
-        description: 'Automated lead generation and outreach pipeline for new property owners.',
-        url: 'https://localvr-lead-gen-production.up.railway.app/',
-        icon: Magnet,
-      },
-      {
         name: 'Phone Health',
         description: 'Monitor sales phone numbers for spam flags. Alerts AEs via Slack when flagged.',
         url: 'https://vivacious-cooperation-production.up.railway.app',
         icon: Phone,
+      },
+      {
+        name: 'Listing Scout',
+        description: 'Chrome extension for the lead gen team. Enriches Airbnb/VRBO listings with owner data on the fly.',
+        url: '#',
+        icon: Chrome,
+        comingSoon: true,
       },
     ],
   },
@@ -102,19 +164,23 @@ const categories: Category[] = [
 
 function AppCard({ app }: { app: AppTile }) {
   const Icon = app.icon
+  const isComingSoon = app.comingSoon === true
 
-  return (
-    <a
-      href={app.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block bg-white rounded-md border border-border p-5 min-h-[176px] hover:shadow-lg hover:border-primary transition-all duration-200"
+  const card = (
+    <div
+      className={`group bg-white rounded-md border border-border p-5 min-h-[176px] transition-all duration-200 ${
+        isComingSoon
+          ? 'opacity-[0.7] hover:opacity-[0.85] hover:shadow-md hover:border-primary cursor-default'
+          : 'hover:shadow-lg hover:border-primary cursor-pointer'
+      }`}
     >
       <div className="flex items-start justify-between mb-3">
         <div className="w-12 h-12 rounded-lg bg-[#FAF3EC] flex items-center justify-center">
           <Icon className="w-5 h-5 text-primary-dark" />
         </div>
-        <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+        {!isComingSoon && (
+          <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+        )}
       </div>
 
       <h3 className="font-semibold text-foreground text-base mb-1.5">
@@ -124,6 +190,20 @@ function AppCard({ app }: { app: AppTile }) {
       <p className="text-sm text-muted-foreground leading-relaxed">
         {app.description}
       </p>
+
+      {isComingSoon && (
+        <span className="inline-block mt-2.5 text-[11px] font-medium text-primary-dark bg-[#FAF3EC] px-2 py-0.5 rounded-full">
+          Coming Soon
+        </span>
+      )}
+    </div>
+  )
+
+  if (isComingSoon) return card
+
+  return (
+    <a href={app.url} target="_blank" rel="noopener noreferrer" className="block">
+      {card}
     </a>
   )
 }
@@ -133,7 +213,7 @@ function App() {
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <header className="bg-white border-b border-border py-8">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className="max-w-[1400px] mx-auto px-6 text-center">
           <img
             src="/localvr-icon.png"
             alt="LocalVR"
@@ -146,8 +226,8 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-10 flex-1 w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-8">
+      <main className="max-w-[1400px] mx-auto px-6 py-10 flex-1 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-x-5 gap-y-8">
           {categories.map((category) => (
             <div key={category.label}>
               {/* Category Header */}
