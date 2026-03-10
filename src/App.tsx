@@ -209,6 +209,8 @@ function AppCard({ app }: { app: AppTile }) {
 }
 
 function App() {
+  const maxCards = Math.max(...categories.map((c) => c.apps.length))
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
@@ -227,15 +229,14 @@ function App() {
 
       {/* Main Content */}
       <main className="max-w-[1400px] mx-auto px-6 py-10 flex-1 w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-x-5 gap-y-8">
+
+        {/* Mobile / Tablet: column-based stacking */}
+        <div className="xl:hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-8">
           {categories.map((category) => (
             <div key={category.label}>
-              {/* Category Header */}
               <h2 className="text-xs font-semibold uppercase tracking-[1.5px] text-primary-dark mb-4">
                 {category.label}
               </h2>
-
-              {/* App Cards */}
               <div className="flex flex-col gap-4">
                 {category.apps.map((app) => (
                   <AppCard key={app.name} app={app} />
@@ -243,6 +244,30 @@ function App() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Desktop: row-aligned grid — cards align across all 5 columns */}
+        <div className="hidden xl:grid grid-cols-5 gap-x-5 gap-y-4">
+          {/* Category headers */}
+          {categories.map((category) => (
+            <h2
+              key={category.label}
+              className="text-xs font-semibold uppercase tracking-[1.5px] text-primary-dark mb-0"
+            >
+              {category.label}
+            </h2>
+          ))}
+
+          {/* Card rows */}
+          {Array.from({ length: maxCards }).map((_, rowIdx) =>
+            categories.map((category) => (
+              <div key={`${category.label}-${rowIdx}`}>
+                {category.apps[rowIdx] ? (
+                  <AppCard app={category.apps[rowIdx]} />
+                ) : null}
+              </div>
+            ))
+          )}
         </div>
       </main>
 
