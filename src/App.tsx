@@ -16,6 +16,8 @@ import {
   CalendarCheck,
   ChartLine,
   Chrome,
+  Handshake,
+  BarChart3,
   Pencil,
   Check,
   X,
@@ -68,6 +70,13 @@ const defaultCategories: Category[] = [
     label: 'CRM & WORKFLOW',
     apps: [
       {
+        name: 'Realtor CRM',
+        description: 'Agent partnership CRM. Track relationships, auto-ingest listings, and manage outreach across all markets.',
+        useCase: 'Manage real estate agent partnerships — track agents through the pipeline, see auto-scraped listings, run cadences, and coordinate partner outreach.',
+        url: 'https://real-estate-agent-crm-tawny.vercel.app',
+        icon: Handshake,
+      },
+      {
         name: 'Sales Home',
         description: 'Rep daily cockpit. Ranked task list, AI morning briefing, and active deal management.',
         useCase: 'Your dashboard for the day — see your events, tasks, what to work on, and what to focus on.',
@@ -117,6 +126,14 @@ const defaultCategories: Category[] = [
         useCase: 'See where all properties are, their resources, how much money they\'ve made, and key performance data.',
         url: 'https://interactive-map-production.up.railway.app',
         icon: Map,
+      },
+      {
+        name: 'Comp Report',
+        description: 'Generate comparable property reports using actual managed property data — occupancy, ADR, and revenue.',
+        useCase: 'Show a homeowner lead how a similar property you manage actually performed with real numbers and graphs, instead of just projections.',
+        url: '#',
+        icon: BarChart3,
+        comingSoon: true,
       },
       {
         name: 'Projections App',
