@@ -145,11 +145,10 @@ const defaultCategories: Category[] = [
       },
       {
         name: 'Comp Report',
-        description: 'Generate comparable property reports using actual managed property data — occupancy, ADR, and revenue.',
-        useCase: 'Show a homeowner lead how a similar property you manage actually performed with real numbers and graphs, instead of just projections.',
-        url: '#',
+        description: 'Generate shareable one-pager comp docs with actual rental performance — revenue, occupancy, ADR, and RevPAR.',
+        useCase: 'Show a homeowner lead how a similar property you manage actually performed with real numbers and graphs. Generates a branded, shareable link they can view and download.',
+        url: 'https://comps.golocalvr.com/',
         icon: BarChart3,
-        comingSoon: true,
       },
       {
         name: 'Projections App',
